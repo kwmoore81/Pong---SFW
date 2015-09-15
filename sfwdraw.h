@@ -65,4 +65,5 @@ namespace sfw
 
 	//draws a circly at pixel x,y with a radius of r
 	void drawCircle(float x, float y, float r);
+
 }
