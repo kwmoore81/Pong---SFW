@@ -9,95 +9,6 @@ using namespace sfw;
 const int windowWidth = 1000;
 const int windowHeight = 720;
 
-void rightPlayerLogic()
-{
-	//Right Player Logic
-
-	RightPlayer.PlayerTopY += RightPlayer.RPlayerYvel * getDeltaTime();
-	RightPlayer.PlayerBottomY += RightPlayer.RPlayerYvel * getDeltaTime();
-	RightPlayer.PlayerTopY2 += RightPlayer.RPlayerYvel2 * getDeltaTime();
-	RightPlayer.PlayerBottomY2 += RightPlayer.RPlayerYvel2 * getDeltaTime();
-	RightPlayer.RPlayerYvel += RightPlayer.RPlayerYacc * getDeltaTime();
-	RightPlayer.RPlayerYvel2 += RightPlayer.RPlayerYacc2 * getDeltaTime();
-
-	drawLine(RightPlayer.RPlayerTopX, RightPlayer.PlayerTopY, RightPlayer.RPlayerTopX, RightPlayer.PlayerBottomY);
-	drawLine(RightPlayer.RPlayerTopX2, RightPlayer.PlayerTopY, RightPlayer.RPlayerTopX2, RightPlayer.PlayerBottomY);
-	drawLine(RightPlayer.RPlayerTopX, RightPlayer.PlayerTopY, RightPlayer.RPlayerTopX2, RightPlayer.PlayerTopY);
-	drawLine(RightPlayer.RPlayerTopX, RightPlayer.PlayerBottomY, RightPlayer.RPlayerTopX2, RightPlayer.PlayerBottomY);
-
-	if (getKey('o')) RightPlayer.RPlayerYvel = -playerSpeed; if (getKey('o')) RightPlayer.RPlayerYvel2 = -playerSpeed;
-	if (getKey('l')) RightPlayer.RPlayerYvel = playerSpeed; if (getKey('l')) RightPlayer.RPlayerYvel2 = playerSpeed;
-
-	if (RightPlayer.PlayerTopY < (windowHeight - windowHeight) + 15)
-	{
-		RightPlayer.RPlayerYvel = 0; RightPlayer.RPlayerYvel2 = 0;
-
-		if (getKey('l'))
-		{
-
-			RightPlayer.RPlayerYvel = playerSpeed; RightPlayer.PlayerYvel2 = playerSpeed;
-
-		}
-	}
-	if (RightPlayer.PlayerBottomY > windowHeight - 12)
-	{
-
-		RightPlayer.RPlayerYvel = 0; RightPlayer.RPlayerYvel2 = 0;
-
-		if (getKey('o'))
-		{
-
-			RightPlayer.RPlayerYvel = -playerSpeed; RightPlayer.RPlayerYvel2 = -playerSpeed;
-
-		}
-	}
-}
-
-void aiPlayerLogic()
-{
-	//AI Player Logic
-
-	RightPlayer.PlayerTopY += RightPlayer.RPlayerYvel = yBallPos  * getDeltaTime();
-	RightPlayer.PlayerBottomY  += RightPlayer.RPlayerYvel = yBallPos * getDeltaTime();
-	RightPlayer.PlayerTopY2 += RightPlayer.RPlayerYvel2 = yBallPos * getDeltaTime();
-	RightPlayer.PlayerBottomY2 += RightPlayer.RPlayerYvel2 = yBallPos * getDeltaTime();
-	RightPlayer.RPlayerYvel += RightPlayer.RPlayerYacc = yBallPos * getDeltaTime();
-	RightPlayer.RPlayerYvel2 += RightPlayer.RPlayerYacc2 = yBallPos * getDeltaTime();
-
-	drawLine(RightPlayer.RPlayerTopX, RightPlayer.PlayerTopY, RightPlayer.RPlayerTopX, RightPlayer.PlayerBottomY);
-	drawLine(RightPlayer.RPlayerTopX2, RightPlayer.PlayerTopY, RightPlayer.RPlayerTopX2, RightPlayer.PlayerBottomY);
-	drawLine(RightPlayer.RPlayerTopX, RightPlayer.PlayerTopY, RightPlayer.RPlayerTopX2, RightPlayer.PlayerTopY);
-	drawLine(RightPlayer.RPlayerTopX, RightPlayer.PlayerBottomY, RightPlayer.RPlayerTopX2, RightPlayer.PlayerBottomY);
-	//drawCircle(RightPlayer.PlayerTopY - 65, RightPlayer.PlayerBottomY + 65, 0);
-	
-	//RightPlayer.RPlayerYvel = yBallPos; RightPlayer.RPlayerYvel2 = yBallPos;
-
-	if (RightPlayer.PlayerTopY < (windowHeight - windowHeight) + 15)
-	{
-		RightPlayer.RPlayerYvel = 0; RightPlayer.RPlayerYvel2 = 0;
-
-		/*if (getKey('l'))
-		{
-
-			RightPlayer.RPlayerYvel = playerSpeed; RightPlayer.PlayerYvel2 = playerSpeed;
-
-		}*/
-	}
-	if (RightPlayer.PlayerBottomY > windowHeight - 12)
-	{
-
-		RightPlayer.RPlayerYvel = 0; RightPlayer.RPlayerYvel2 = 0;
-
-		/*if (getKey('o'))
-		{
-
-			RightPlayer.RPlayerYvel = -playerSpeed; RightPlayer.RPlayerYvel2 = -playerSpeed;
-
-		}*/
-	}
-}
-	
-
 
 void runGame()
 {
@@ -126,10 +37,8 @@ void runGame()
 			ballRad = 10;
 			++LeftPlayer.PlayerScore;
 
-			/* if (LeftPlayer.PlayerScore = 1)
-			{
-			drawCircle(400, 20, 5);
-			}*/
+		
+			
 
 			if (LeftPlayer.PlayerScore >= 4)
 			{
@@ -181,7 +90,6 @@ void runGame()
 			xBallVel += -xBallVel * 2.1;
 		}
 
-
 		//Left Player Logic
 
 		LeftPlayer.PlayerTopY += LeftPlayer.PlayerYvel * getDeltaTime();
@@ -222,14 +130,82 @@ void runGame()
 
 			}
 		}
-
-		if (menuChoice[0] == 'o')
+		
+		switch (LeftPlayer.PlayerScore)
 		{
-			aiPlayerLogic();
+		case 1:
+			drawCircle(400, 25, 5);
+			break;
+		case 2:
+			drawCircle(400, 25, 5);
+			drawCircle(400, 25, 10);
+			break;
+		case 3:
+			drawCircle(400, 25, 5);
+			drawCircle(400, 25, 10);
+			drawCircle(400, 25, 15);
+			break;
+		default:
+			break;
 		}
-		if (menuChoice[0] == 't')
+		
+		//Right Player Logic
+		
+		RightPlayer.PlayerTopY += RightPlayer.RPlayerYvel * getDeltaTime();
+		RightPlayer.PlayerBottomY += RightPlayer.RPlayerYvel * getDeltaTime();
+		RightPlayer.PlayerTopY2 += RightPlayer.RPlayerYvel2 * getDeltaTime();
+		RightPlayer.PlayerBottomY2 += RightPlayer.RPlayerYvel2 * getDeltaTime();
+		RightPlayer.RPlayerYvel += RightPlayer.RPlayerYacc * getDeltaTime();
+		RightPlayer.RPlayerYvel2 += RightPlayer.RPlayerYacc2 * getDeltaTime();
+
+		drawLine(RightPlayer.RPlayerTopX, RightPlayer.PlayerTopY, RightPlayer.RPlayerTopX, RightPlayer.PlayerBottomY);
+		drawLine(RightPlayer.RPlayerTopX2, RightPlayer.PlayerTopY, RightPlayer.RPlayerTopX2, RightPlayer.PlayerBottomY);
+		drawLine(RightPlayer.RPlayerTopX, RightPlayer.PlayerTopY, RightPlayer.RPlayerTopX2, RightPlayer.PlayerTopY);
+		drawLine(RightPlayer.RPlayerTopX, RightPlayer.PlayerBottomY, RightPlayer.RPlayerTopX2, RightPlayer.PlayerBottomY);
+
+		if (getKey('o')) RightPlayer.RPlayerYvel = -playerSpeed; if (getKey('o')) RightPlayer.RPlayerYvel2 = -playerSpeed;
+		if (getKey('l')) RightPlayer.RPlayerYvel = playerSpeed; if (getKey('l')) RightPlayer.RPlayerYvel2 = playerSpeed;
+
+		if (RightPlayer.PlayerTopY < (windowHeight - windowHeight) + 15)
 		{
-			rightPlayerLogic();
+			RightPlayer.RPlayerYvel = 0; RightPlayer.RPlayerYvel2 = 0;
+
+			if (getKey('l'))
+			{
+
+				RightPlayer.RPlayerYvel = playerSpeed; RightPlayer.PlayerYvel2 = playerSpeed;
+
+			}
+		}
+		if (RightPlayer.PlayerBottomY > windowHeight - 12)
+		{
+
+			RightPlayer.RPlayerYvel = 0; RightPlayer.RPlayerYvel2 = 0;
+
+			if (getKey('o'))
+			{
+
+				RightPlayer.RPlayerYvel = -playerSpeed; RightPlayer.RPlayerYvel2 = -playerSpeed;
+
+			}
+		}
+
+		switch (RightPlayer.RPlayerScore)
+		{
+		case 1:
+			drawCircle(600, 25, 5);
+			break;
+		case 2:
+			drawCircle(600, 25, 5);
+			drawCircle(600, 25, 10);
+			break;
+		case 3:
+			drawCircle(600, 25, 5);
+			drawCircle(600, 25, 10);
+			drawCircle(600, 25, 15);
+			break;
+		default:
+			break;
 		}
 
 		//Draw Table
@@ -252,21 +228,13 @@ int main()
 	{
 		cout << "                                Pong!"             << endl
 			 << "                       First to 4 Points is Game!" << endl
-		   	 << "                        Press O for one Player!"   << endl
-			 << "                        Press T for two Player!"   << endl
+		   	 << "                           Press P to Play!"   << endl			
 			 << "                           Press Q to Exit."       << endl
 			 << "                       Press I for instructions."  << endl;
 
 		cin >> menuChoice;
 		
-		if (menuChoice[0] == 'o')
-		{
-			menu = false;
-		    runGame();
-						
-		}
-
-		if (menuChoice[0] == 't')
+		if (menuChoice[0] == 'p')
 		{
 			menu = false;
 			runGame();
@@ -308,15 +276,6 @@ int main()
 
 		}
 	}
-	
-  
-	  
-
-   
-   
-
-   
-
 	
 
 	termContext();

@@ -22,7 +22,7 @@ struct DrawPlayer
 	float PlayerBottomX2 = 50, PlayerBottomY2 = 430;
 	float PlayerYacc2 = 0;
 	float PlayerYvel2 = 0;
-	float PlayerScore = 0;
+	int PlayerScore = 0;
 	
 
 	float RPlayerTopX = 970;
@@ -33,7 +33,7 @@ struct DrawPlayer
 	float RPlayerBottomX2 = 950;
 	float RPlayerYacc2 = 0;
 	float RPlayerYvel2 = 0;
-	float RPlayerScore = 0;
+	int RPlayerScore = 0;
 	
 
 };
