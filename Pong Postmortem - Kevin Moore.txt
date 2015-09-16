@@ -1,0 +1,49 @@
+Kevin Moore - Pong Postmortem
+
+	Since Pong was my first class project, I really wanted to see what I was capable of. I didn't want to stick to just the parameters 
+set forth in the assignment. This decision really helped me prove to myself that I was capable of this kind of work, but it wasn't without
+it's hurdles.
+
+	I had quite a few grand ideas that I wanted to implement into Pong to make it unique. This ranged from power-ups to multiple balls.
+I quickly realized that what could be done with my version of Pong would be severely limited by my own lack of knowledge of the c++ language.
+While I still was determined to push farther than the assignment asked for, however I knew that I had to dum down my delusions of granger.
+It was quite a humbling experience to say the least.
+
+
+What went right.
+
+	I had a clear plan on how I wanted to structure the game, and the order I wanted to make each idea that I had swimming in my head.
+For the most part this went as planned, even without structuring it all out on paper. When I understood how to put together the syntax for
+the problem I was trying to solve, the programming experience moved very smoothly and was extremely rewarding. For example, the menu system,
+the scoring system, the game board layout, and drawing all the items for gameplay. Things seemed like it would move pretty fast, and I would
+be done in no time. However this was not the case.
+
+
+What went wrong.
+
+	I found a few things in the syntax that I though I had down, but it quickly became obvious that this was not the case. Trying
+to get all my code to work in harmony in multiple .cpp and header files after being originally written in one single .cpp was a bit of a 
+nightmare. I practically rewrote all my code one error at a time. I also found myself mulling over my code for hours because of a missed typed
+==. The most disappointing thing was the AI for a one player mode. The way I structured my code for the movement of the paddles was made in
+such a way that programming it to follow the ball on it's own was beyond my knowledge. At this time, I realized how I should have handled my
+paddle movement that would have made making the AI a simple process. However this would mean a rewrite of at least 80% of my code. Ultimately
+I scrapped the idea for a one player mode to use my time to make the features that did work better. 
+
+
+What I learned from the experience.
+
+	First and foremost. Write your code from the beginning how you want/need it to be at the end. Take in mind how the method you are
+handling every situation will effect every feature that you plan to include later. Code more often to get a better "eye" to see errors in my 
+own code. Finally, I'm not the programmer I thought I was, but I now know I have the dive to be the programmer I want to be.
+
+
+
+
+	
+
+
+
+
+
+
+
